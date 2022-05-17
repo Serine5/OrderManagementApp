@@ -1,0 +1,28 @@
+﻿@page
+@model OrderManagementApp.IndexModel
+@{
+    <InputSelect id="Cities" class="form-control"
+             ValueExpression="@(() => CascadingVM.CityId)"
+             Value="@CascadingVM.CountryId"
+             ValueChanged="@((string value) => OnCountryChange(value))">
+
+    @foreach (var state in CascadingVM.ListofCountries)
+    {
+        <option value="@state.Value">@state.Text</option>
+    }
+</InputSelect>
+<InputSelect id="Suppliers" class="form-control"
+             ValueExpression="@(() => CascadingVM.SupplierId)"
+             Value="@CascadingVM.SupplierId"
+             ValueChanged="@((string value) => OnStateChange(value))">
+
+    @if (CascadingVM.ListofSuppliers != null)
+    {
+        @foreach (var state in CascadingVM.ListofState)
+        {
+            <option value="@state.Value">@state.Text</option>
+        }
+    }
+</InputSelect>
+}
+
